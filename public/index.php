@@ -32,7 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $controller=new Controller();
             echo json_encode($controller->currentTime());
             break;
-        default:echo "No match for URI: " . $_SERVER['REQUEST_URI'];
+        default://echo "No match for URI: " . $_SERVER['REQUEST_URI'];
+            header('Location: /page404.php');
+            exit();
     } 
 } else {
     echo "Not a GET request";
