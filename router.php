@@ -12,9 +12,9 @@
 // }
 
 
-if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER['REQUEST_URI'])) {
+if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js|html)$/', $_SERVER['REQUEST_URI'])) {
     return false;  // отдавать статические файлы напрямую
 } else {
     // Рендерим главный файл index.html
-    require 'index.html';
+    require __DIR__ . '/public/index.php';
 }

@@ -8,9 +8,7 @@ use App\Controller\Controller;
 require_once (__DIR__.'/../vendor/autoload.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    // Если пользователь заходит на корневой путь
     if (trim(str_replace('/','', $_SERVER['REQUEST_URI'])) === '') {
-        // Рендерим представление (React будет загружен)
         require 'index.html';
         exit();
     }
@@ -32,8 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $controller=new Controller();
             echo json_encode($controller->currentTime());
             break;
+        case '/list':
+            $controller=new Controller();
+            echo json_encode($controller->getAll());
+            break;
         default://echo "No match for URI: " . $_SERVER['REQUEST_URI'];
-            header('Location: /page404.php');
+            header('Location: /page404.html');
             exit();
     } 
 } else {

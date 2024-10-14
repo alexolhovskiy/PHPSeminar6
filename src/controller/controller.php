@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Models\AddUser;
 use App\Models\SearchUser;
 use App\Models\DeleteUser;
+use App\Models\GetUsers;
 use App\Models\Timer;
 
 class Controller{
@@ -31,9 +32,14 @@ class Controller{
         $timer=new Timer();
         return $timer->getTime();
     }
-    public function index() {
-        // Рендерим представление (React будет загружен)
-        require '../src/views/index.html';
+    // public function index() {
+    //     // Рендерим представление (React будет загружен)
+    //     require '../src/views/index.html';
+    // }
+    public function getAll(){
+        $db=new GetUsers();
+        return $db->getAll();
     }
+
 
 }
